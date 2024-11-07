@@ -1,2 +1,3 @@
-# internal-demo
-My own demo repo
+# Sample Node.js application
+
+This repository is a sample Node.js application for Docker's documentation.
