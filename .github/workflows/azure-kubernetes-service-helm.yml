@@ -36,7 +36,7 @@ name: Build and deploy an app to AKS with Helm
 
 on:
   push:
-    branches: ["main"]
+    branches: ["release"]
   workflow_dispatch:
 
 env:
