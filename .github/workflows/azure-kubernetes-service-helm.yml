@@ -40,9 +40,9 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_CONTAINER_REGISTRY: "your-azure-container-registry"
-  CONTAINER_NAME: "your-container-name"
-  RESOURCE_GROUP: "your-resource-group"
+  AZURE_CONTAINER_REGISTRY: "3ac96754-82ab-40ea-826d-225fd1cd3214"
+  CONTAINER_NAME: "internal-demo-aks-helm"
+  RESOURCE_GROUP: "internal-demo"
   CLUSTER_NAME: "your-cluster-name"
   CHART_PATH: "your-chart-path"
   CHART_OVERRIDE_PATH: "your-chart-override-path"
