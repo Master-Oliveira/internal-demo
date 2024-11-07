@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "Docker Node.js Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "platform": "node"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Node.js Launch",
+            "program": "${workspaceFolder}/${input:programPath}",
+            "args": [],
+            "env": {
+              "NODE_ENV": "development"
+            },
+            "console": "integratedTerminal"
+          }
+        ],
+        "inputs": [
+          {
+            "type": "promptString",
+            "id": "programPath",
+            "description": "Enter the path to the program (e.g., src/index.js)"
+          }
+        ]
+}
