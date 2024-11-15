@@ -3,6 +3,7 @@ name: Docker Image CI
 on:
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
 
@@ -11,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: get authorization
+      run: |
+         gh auth status
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag internal-demo:$(date +%s)
