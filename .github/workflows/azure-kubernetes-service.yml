@@ -58,6 +58,16 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      
+      - name: Get Appsettings Key Vault Secrets
+        run: |
+          api_secret=$(az keyvault secret show --name MySecret --vault-name kvinternaldemo --query value -o tsv)
+          echo "::add-mask::$api_secret"
+          echo "ApiKey=$api_secret" >> "$GITHUB_OUTPUT"
+        id: my-api-key
+      
+      - name: Output Secret Value
+        run: echo "Secret Value is ${{ steps.my-api-key.outputs.ApiKey}}
 
       # Builds and pushes an image up to your Azure Container Registry
       - name: Build and push image to ACR
@@ -65,6 +75,8 @@ jobs:
           az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
 
   deploy:
+    # disable this job 
+    if: false
     permissions:
       actions: read
       contents: read
