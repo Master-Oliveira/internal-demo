@@ -67,7 +67,7 @@ jobs:
         id: my-api-key
       
       - name: Output Secret Value
-        run: echo "Secret Value is ${{ steps.my-api-key.outputs.ApiKey}}
+        run: echo "Secret Value is ${{ steps.my-api-key.outputs.ApiKey}}"
 
       # Builds and pushes an image up to your Azure Container Registry
       - name: Build and push image to ACR
